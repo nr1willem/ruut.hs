@@ -1,6 +1,11 @@
 import System.Environment
 import Text.Read (readMaybe)
 
+{-
+Ruudukujulise plekitüki serv on a cm.
+Kui suured ruudud tuleb nurkadest ära lõigata, et saada maksimaalse ruumalaga pealt lahtine karp?
+-}
+
 f :: Double -> Double -> Double
 f a x = (a^2 * x) - (4*a*x^2) + (4*x^3)
 
@@ -29,8 +34,8 @@ main = do
         (input:_) -> case readMaybe input :: Maybe Double of
             Just a -> case findBiggestXForA a of
                 Just biggestX -> do
-                    putStrLn $ "the biggest x value for which dfdx = 0 when a = " ++ show a ++ " is: " ++ show biggestX
+                    putStrLn $ "ruudu serv a = " ++ show a ++ " et saada maksimaalse ruumalaga pealt lahtine karp peab lõikama nurkadest ruudud mille suuruseks on: " ++ show biggestX
                     putStrLn $ "f(a, biggestX) = " ++ show (f a biggestX)
-                Nothing -> putStrLn "the equation does not have real roots for df/dx = 0 for the given value of a."
-            Nothing -> putStrLn "please enter a valid number for a."
-        _ -> putStrLn "please provide an argument."
+                Nothing -> putStrLn "lahendid puuduvad"
+            Nothing -> putStrLn "palun andke number"
+        _ -> putStrLn "palun andke argument"
